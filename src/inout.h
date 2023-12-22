@@ -27,7 +27,7 @@ dane_wywolania czytaj_argumenty(int argc, char** argv);
 
 
 // <<<<<<<<<<<<<<<<< PIOTRUŚ
-void wypisz_mape(p_mapa map, FILE* wyjscie);
+int wypisz_mape(p_mapa map, FILE* wyjscie); //Funkcja zwraca 0 jeśli sukces w wypisywaniu i 1 jeśli fail
 /* Funkcja ma wypisać do wyjscia mapę włącznie z lokalizacją mrówki i jej kierunkiem.
  * Niech korzysta z funkcji fprintf, to będzie można też pisać do stdout
  * poniżej znaki, które możesz użyć.
