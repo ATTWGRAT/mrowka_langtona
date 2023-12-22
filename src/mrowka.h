@@ -1,6 +1,19 @@
 #ifndef _MROWKA_
 #define _MROWKA_
 
+typedef enum k{
+    PRAWO = 'P',
+    LEWO = 'L',
+    GORA = 'G',
+    DOL = 'D'
+}kierunek;
+
+typedef struct mr{
+    int x;
+    int y; //Pozycja (x, y) mrówki na mapie
+    kierunek k;
+}mrowka;
+
 typedef enum p{
 	/* Enum reprezentujący pojedyncze pole. 
 	 * mapa_tab to dwuwymiarowa tablica reprezuntująca mapę. 
@@ -16,13 +29,14 @@ typedef enum p{
 typedef struct m{
 	/* Struktura reprezentująca mapę z rozmiarami.
 	 * mapa - tablica pól.
-	 * x - szerokość mapy.
-	 * y - wysokość mapy.
+	 * m - szerokość mapy.
+	 * n - wysokość mapy.
 	 * */
 
+    mrowka pozycja;
 	mapa_tab mapa;
-	int x;
-	int y;
+	int m;
+	int n;
 
 }*p_mapa;
 
