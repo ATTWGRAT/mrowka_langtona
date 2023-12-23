@@ -5,8 +5,15 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <wchar.h>
-#include <math.h>
 #include <time.h>
+#include <math.h>
+
+typedef enum k{
+    PRAWO = 'P',
+    LEWO = 'L',
+    GORA = 'G',
+    DOL = 'D'
+}kierunek;
 
 typedef struct{
     int m; //liczba wierszy

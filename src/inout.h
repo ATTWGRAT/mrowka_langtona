@@ -1,7 +1,6 @@
 #ifndef MROWKA_LANGTONA_INOUT_H
 #define MROWKA_LANGTONA_INOUT_H
 
-#include "mrowka.h"
 #include "mapa.h"
 #include "dane.h"
 

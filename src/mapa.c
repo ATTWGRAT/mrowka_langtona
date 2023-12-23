@@ -57,7 +57,7 @@ p_mapa stworz_mape(dane_wywolania dane)
 
     } else {
         mrow.x = dane.n/2;
-        mrow.y = dane.m % 2 == 1 ? dane.m / 2 + 1 : dane.m / 2;
+        mrow.y = dane.m/2;
     }
 
     mrow.k = dane.kier;

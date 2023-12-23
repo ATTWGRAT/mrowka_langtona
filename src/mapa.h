@@ -1,8 +1,13 @@
 #ifndef MROWKA_LANGTONA_MAPA_H
 #define MROWKA_LANGTONA_MAPA_H
 
-#include "mrowka.h"
 #include "dane.h"
+
+typedef struct mr{
+    int x;
+    int y; //Pozycja (x, y) mrówki na mapie
+    kierunek k;
+}mrowka;
 
 typedef enum p{
     /* Enum reprezentujący pojedyncze pole.

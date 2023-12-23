@@ -1,19 +1,10 @@
 #ifndef _MROWKA_
 #define _MROWKA_
 
-typedef enum k{
-    PRAWO = 'P',
-    LEWO = 'L',
-    GORA = 'G',
-    DOL = 'D'
-}kierunek;
+#include "dane.h"
+#include "mapa.h"
+#include "mrowka.h"
 
-typedef struct mr{
-    int x;
-    int y; //Pozycja (x, y) mrówki na mapie
-    kierunek k;
-}mrowka;
-
-
+int mrowka_odpal(int i, p_mapa map);
 
 #endif
