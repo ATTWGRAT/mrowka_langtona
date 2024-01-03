@@ -71,6 +71,15 @@ int mrowka_odpal(int i, p_mapa map)
     {
         if(mrowka_przejdz(map))
             return 1;
+#ifdef TEST
+        for(int k = 0; k < map->n; k++)
+        {
+            for(int h = 0; h < map->m; h++)
+                printf("%d", map->mapa[k][h]);
+            printf("\n");
+        }
+        printf("Done\n");
+#endif
     }
     return 0;
 }
