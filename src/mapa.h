@@ -2,7 +2,7 @@
 #define MROWKA_LANGTONA_MAPA_H
 
 #include "dane.h"
-
+#include <math.h>
 typedef struct mr{
     int x;
     int y; //Pozycja (x, y) mrówki na mapie
