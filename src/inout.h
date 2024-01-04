@@ -1,32 +1,14 @@
 #ifndef MROWKA_LANGTONA_INOUT_H
 #define MROWKA_LANGTONA_INOUT_H
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <wchar.h>
+#include "mapa.h"
+#include "dane.h"
 
-#include "mrowka.h"
-
-typedef struct{
-    int m; //liczba wierszy
-    int n; //liczba kolumn
-    int i; //liczba iteracji
-    char* name; //przedrostek nazwy pliku wyjściowego
-    kierunek kier; //JEDNA Z LITER: L, P, G, D - ODPOWIEDNIO LEWO PRAWO GÓRA DÓŁ. Implementacja za pomocą enuma (argument 'P' odpowiada wartości stałej PRAWO w strukturze).
-    FILE* mapa; //Opcjonalny plik z mapą. W przypadku braku podanego w argumentach ustawić na NULL;
-    double procent; //Procentowe wypełnienie mapy. W przypadku nie podania argumentu ustawić na -1;
-}dane_wywolania;
-
-
-// <<<<<<<<<<<<<<<<< ANGELIKA
 dane_wywolania czytaj_argumenty(int argc, char** argv);
 /* Funkcja ma tworzyć strukturę dane_wywolania (po prostu "dane_wywolania nazwa").
  * Następnie korzystając z funkcji getopt wpakować je do struktury zgodnie z zasadami
  * zdefiniowanymi powyżej.*/
 
-
-// <<<<<<<<<<<<<<<<< PIOTRUŚ
 int wypisz_mape(p_mapa map, FILE* wyjscie); //Funkcja zwraca 0 jeśli sukces w wypisywaniu i 1 jeśli fail
 /* Funkcja ma wypisać do wyjscia mapę włącznie z lokalizacją mrówki i jej kierunkiem.
  * Niech korzysta z funkcji fprintf, to będzie można też pisać do stdout
@@ -50,4 +32,7 @@ int wypisz_mape(p_mapa map, FILE* wyjscie); //Funkcja zwraca 0 jeśli sukces w w
 // ARROW_WEST_BLACK:◀
 
 // Implementacją opcjonalnych części zajmiemy się później.
+
+
+int wczytaj_mape_z_pliku(FILE* plik, int n, int m, mapa_tab mapa, mrowka* mrow);
 #endif
