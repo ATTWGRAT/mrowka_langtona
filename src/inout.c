@@ -61,7 +61,7 @@ int wypisz_mape(p_mapa map, FILE* wyjscie)
 
         for(int j = 0; j < map->n; j++)
         {
-            if(map->pozycja.x == i && map->pozycaj.y == j)
+            if(map->pozycja.x == i && map->pozycja.y == j)
             {
                 switch(map->pozycja.k){
                     case PRAWO:
@@ -72,7 +72,7 @@ int wypisz_mape(p_mapa map, FILE* wyjscie)
                             case 0:
                                 fwprintf(wyjscie, L"%s%s", LINE_HORIZONTAL, ARROW_EAST_WHITE);
                                 break;         
-                    }
+                        }
                         break;
                     case LEWO:
                         switch(map->mapa[i][j]){
@@ -82,7 +82,7 @@ int wypisz_mape(p_mapa map, FILE* wyjscie)
                             case 0:
                                 fwprintf(wyjscie, L"%s%s", LINE_HORIZONTAL, ARROW_WEST_WHITE);
                                 break;         
-                    }
+                        }
                         break;
                     case DOL:
                         switch(map->mapa[i][j]){
@@ -92,9 +92,9 @@ int wypisz_mape(p_mapa map, FILE* wyjscie)
                             case 0:
                                 fwprintf(wyjscie, L"%s%s", LINE_HORIZONTAL, ARROW_SOUTH_WHITE);
                                 break;         
-                    }
+                        }
                         break;
-                    case GORA
+                    case GORA:
                         switch(map->mapa[i][j]){
                             case 1:
                                 fwprintf(wyjscie, L"%s%s", LINE_HORIZONTAL, ARROW_NORTH_BLACK);
@@ -102,7 +102,7 @@ int wypisz_mape(p_mapa map, FILE* wyjscie)
                             case 0:
                                 fwprintf(wyjscie, L"%s%s", LINE_HORIZONTAL, ARROW_NORTH_WHITE);
                                 break;         
-                    }
+                        }
                         break;
                 }
             }else
@@ -135,5 +135,7 @@ int wypisz_mape(p_mapa map, FILE* wyjscie)
         } else
             fwprintf(wyjscie, L"%ls", LINE_VERTICAL);
     }
+    fprintf(wyjscie, "\n");
+    return 0;
 
 }
