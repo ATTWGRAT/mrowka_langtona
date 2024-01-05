@@ -48,51 +48,92 @@ int wypisz_mape(p_mapa map, FILE* wyjscie)
     wchar_t* ARROW_WEST_WHITE = L"◁";
     wchar_t* ARROW_WEST_BLACK = L"◀";
 
-    fwprintf(wyjscie, "%ls\n", LINE_DOWN_LEFT);
+    fwprintf(wyjscie, L"%ls\n", LINE_DOWN_LEFT);
 
-    for(int x = 0; x < map->m; x++)
-        fwprintf(wyjscie, "%ls", LINE_HORIZONTAL);
+    for(int x = 0; x < map->n; x++)
+        fwprintf(wyjscie, L"%ls", LINE_HORIZONTAL);
 
-    fwprintf(wyjscie, "%ls", LINE_DOWN_LEFT);    
+    fwprintf(wyjscie, L"%ls", LINE_DOWN_LEFT);    
 
-    for(int i = 0; i < map->n ; i++)
+    for(int i = 0; i < map->m ; i++)
     {   
         fprintf(wyjscie, "\n");
 
-        for(int j = 0; j < map->m; j++)
+        for(int j = 0; j < map->n; j++)
         {
-            if(/*pozycja mrówki xd*/)
+            if(map->pozycja.x == i && map->pozycaj.y == j)
             {
-                /*pisz mrówke xd*/
+                switch(map->pozycja.k){
+                    case PRAWO:
+                        switch(map->mapa[i][j]){
+                            case 1:
+                                fwprintf(wyjscie, L"%s%s", LINE_HORIZONTAL, ARROW_EAST_BLACK);
+                                break;
+                            case 0:
+                                fwprintf(wyjscie, L"%s%s", LINE_HORIZONTAL, ARROW_EAST_WHITE);
+                                break;         
+                    }
+                        break;
+                    case LEWO:
+                        switch(map->mapa[i][j]){
+                            case 1:
+                                fwprintf(wyjscie, L"%s%s", LINE_HORIZONTAL, ARROW_WEST_BLACK);
+                                break;
+                            case 0:
+                                fwprintf(wyjscie, L"%s%s", LINE_HORIZONTAL, ARROW_WEST_WHITE);
+                                break;         
+                    }
+                        break;
+                    case DOL:
+                        switch(map->mapa[i][j]){
+                            case 1:
+                                fwprintf(wyjscie, L"%s%s", LINE_HORIZONTAL, ARROW_SOUTH_BLACK);
+                                break;
+                            case 0:
+                                fwprintf(wyjscie, L"%s%s", LINE_HORIZONTAL, ARROW_SOUTH_WHITE);
+                                break;         
+                    }
+                        break;
+                    case GORA
+                        switch(map->mapa[i][j]){
+                            case 1:
+                                fwprintf(wyjscie, L"%s%s", LINE_HORIZONTAL, ARROW_NORTH_BLACK);
+                                break;
+                            case 0:
+                                fwprintf(wyjscie, L"%s%s", LINE_HORIZONTAL, ARROW_NORTH_WHITE);
+                                break;         
+                    }
+                        break;
+                }
             }else
             {
-                switch(map->mapa[map->pozycja][map->pozycja.y]){
+                switch(map->mapa[i][j]){
                     case 1:
-                        fwprintf(wyjscie, "%s%s"LINE_HORIZONTAL, SQUARE_BLACK);
+                        fwprintf(wyjscie, L"%s%s", LINE_HORIZONTAL, SQUARE_BLACK);
                         break;
                     case 0:
-                        fwprintf(wyjscie, "%s%s"LINE_HORIZONTAL, SQUARE_WHITE);
+                        fwprintf(wyjscie, L"%s%s", LINE_HORIZONTAL, SQUARE_WHITE);
                         break;         
                     }
             }
         }
 
-        fwprintf(wyjscie, "%ls\n", LINE_VERTICAL);
+        fwprintf(wyjscie, L"%ls\n", LINE_VERTICAL);
         
-        if(i == map->n-1)
+        if(i == map->m)
         {
-             fwprintf(wyjscie, "%ls", LINE_UP_RIGHT);
+             fwprintf(wyjscie, L"%ls", LINE_UP_RIGHT);
         } else
-            fwprintf(wyjscie, "%ls", LINE_VERTICAL);
+            fwprintf(wyjscie, L"%ls", LINE_VERTICAL);
 
-        for(int j = 0; j < map->m; j++)
-            fwprintf(wyjscie, "%ls", LINE_HORIZONTAL);
+        for(int j = 0; j < map->n; j++)
+            fwprintf(wyjscie, L"%ls", LINE_HORIZONTAL);
 
-        if(i == map->n-1)
+        if(i == map->m)
         {
-             fwprintf(wyjscie, "%ls", LINE_UP_LEFT);
+             fwprintf(wyjscie, L"%ls", LINE_UP_LEFT);
         } else
-            fwprintf(wyjscie, "%ls", LINE_VERTICAL);
+            fwprintf(wyjscie, L"%ls", LINE_VERTICAL);
     }
 
 }
