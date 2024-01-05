@@ -1,5 +1,6 @@
 #include "mrowka.h"
-
+#include "inout.h"
+#include <locale.h>
 int mrowka_przejdz(p_mapa map)
 {
     mrowka* m = &(map->pozycja);
@@ -68,11 +69,12 @@ int mrowka_przejdz(p_mapa map)
 
 int mrowka_odpal(int i, p_mapa map)
 {
+	setlocale(LC_ALL, "C.UTF-8");
     for(int y = 0; y < i; y++)
     {
         if(mrowka_przejdz(map))
             return 1;
-        printf("Iteracja nr: %d\n", y+1);
+        wprintf(L"Iteracja nr: %d\n", y+1);
         wypisz_mape(map, stdout);
     }
     return 0;
