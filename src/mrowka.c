@@ -72,6 +72,7 @@ int mrowka_odpal(int i, p_mapa map)
     {
         if(mrowka_przejdz(map))
             return 1;
+        wypisz_mape(map, stdout);
     }
     return 0;
 }

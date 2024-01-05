@@ -24,8 +24,8 @@ typedef enum p{
 typedef struct m{
     /* Struktura reprezentująca mapę z rozmiarami.
      * mapa - tablica pól.
-     * m - szerokość mapy.
-     * n - wysokość mapy.
+     * n - szerokość mapy.
+     * m - wysokość mapy.
      * */
 
     mrowka pozycja;
