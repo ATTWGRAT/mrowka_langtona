@@ -1,5 +1,5 @@
-#include "inout.h"
 #include <locale.h>
+#include "inout.h"
 int wczytaj_mape_z_pliku(FILE* plik, int n, int m, mapa_tab mapa, mrowka* mrow)
 {
     if(fscanf(plik, "%d", &(mrow->x)) == 0)
@@ -50,8 +50,7 @@ int wypisz_mape(p_mapa map, FILE* wyjscie)
 
     setlocale(LC_ALL, "C.UTF-8");
 
-   
-   fwprintf(wyjscie, L"%ls", LINE_DOWN_RIGHT);
+    fwprintf(wyjscie, L"%ls", LINE_DOWN_RIGHT);
 
     for(int x = 0; x < map->n; x++)
         fwprintf(wyjscie, L"%ls", LINE_HORIZONTAL);
@@ -108,8 +107,8 @@ int wypisz_mape(p_mapa map, FILE* wyjscie)
                         }
                         break;
                 }
-            }else
-            {
+            }
+	    else{
                 switch(map->mapa[i][j]){
                     case 1:
                         fwprintf(wyjscie, L"%ls", SQUARE_BLACK);
@@ -121,16 +120,15 @@ int wypisz_mape(p_mapa map, FILE* wyjscie)
             }
         }
 	fwprintf(wyjscie, L"%ls", LINE_VERTICAL);
-
-	}
-    	fwprintf(wyjscie, L"\n");
+    }
+    fwprintf(wyjscie, L"\n");
         
-             fwprintf(wyjscie, L"%ls", LINE_UP_RIGHT);
+    fwprintf(wyjscie, L"%ls", LINE_UP_RIGHT);
 
-        for(int j = 0; j < map->n; j++)
-            fwprintf(wyjscie, L"%ls", LINE_HORIZONTAL);
+    for(int j = 0; j < map->n; j++)
+        fwprintf(wyjscie, L"%ls", LINE_HORIZONTAL);
 
-             fwprintf(wyjscie, L"%ls", LINE_UP_LEFT);
+    fwprintf(wyjscie, L"%ls", LINE_UP_LEFT);
     
     fwprintf(wyjscie, L"\n");
     return 0;
