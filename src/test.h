@@ -4,6 +4,6 @@
 #include "dane.h"
 #include "mrowka.h"
 
-int test();
+int test(); //CAŁY PLIK TESTOWY
 
 #endif //MROWKA_LANGTONA_TEST_H

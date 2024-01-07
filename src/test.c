@@ -1,5 +1,5 @@
 #include "test.h"
-
+//CAŁY PLIK TESTOWY
 int test()
 {
     for(int i = 2; i < 25; i++)

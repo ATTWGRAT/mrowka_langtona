@@ -72,8 +72,8 @@ int mrowka_odpal(int i, p_mapa map)
     {
         if(mrowka_przejdz(map))
             return 1;
-        printf("Iteracja nr: %d\n", y+1);
-        wypisz_mape(map, stdout);
+        printf("Iteracja nr: %d\n", y+1); //test
+        wypisz_mape(map, stdout); //test
     }
     return 0;
 }
