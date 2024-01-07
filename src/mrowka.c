@@ -86,7 +86,6 @@ int mrowka_odpal(int i, p_mapa map, char* name)
 	    if(mrowka_przejdz(map))
             return 1;
 
-        wprintf(L"Iteracja nr: %d\n", y+1); //test
         wypisz_mape(map, out);
 
 	    if(name != NULL){
