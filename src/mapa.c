@@ -36,7 +36,7 @@ p_mapa stworz_mape(dane_wywolania dane)
     mapa_tab tablica = malloc(dane.m * sizeof *tablica);
 
     for(int i = 0; i < dane.m; i++)
-        tablica[i] = calloc(dane.n, sizeof *tablica[i]);
+        tablica[i] = calloc(dane.n, sizeof (*tablica)[i]);
 
 
     mapa->mapa = tablica;
@@ -47,14 +47,14 @@ p_mapa stworz_mape(dane_wywolania dane)
 
     mrowka mrow;
 
-    if(dane.mapa != NULL)
+    if(dane.mapa != NULL && dane.procent == -1)
     {
         if(wczytaj_mape_z_pliku(dane.mapa, dane.n, dane.m, tablica, &mrow) == 1)
         {
             zwolnij_mape(mapa);
             return NULL;
         }
-
+	fclose(dane.mapa);
     } else {
         mrow.x = dane.n/2;
         mrow.y = dane.m/2;

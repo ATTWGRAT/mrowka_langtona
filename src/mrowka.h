@@ -6,6 +6,6 @@
 #include "mrowka.h"
 #include "inout.h"
 
-int mrowka_odpal(int i, p_mapa map);
+int mrowka_odpal(int i, p_mapa map, char* name);
 
 #endif

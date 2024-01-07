@@ -1,5 +1,5 @@
 #include "mrowka.h"
-
+#include "inout.h"
 int mrowka_przejdz(p_mapa map)
 {
     mrowka* m = &(map->pozycja);
@@ -66,14 +66,33 @@ int mrowka_przejdz(p_mapa map)
     return 0;
 }
 
-int mrowka_odpal(int i, p_mapa map)
-{
+int mrowka_odpal(int i, p_mapa map, char* name)
+{	
     for(int y = 0; y < i; y++)
     {
-        if(mrowka_przejdz(map))
+	    char* nazwa;
+	    FILE* out;
+
+	    if(name != NULL){
+		    if(asprintf(&nazwa, "%s_%d", name, y+1) < 0)
+	    		return 2;
+		    out = fopen(nazwa, "w");
+		    if(out == NULL)
+	    		return 3;
+	    } else {
+		    out = stdout;
+	    }
+
+	    if(mrowka_przejdz(map))
             return 1;
-        printf("Iteracja nr: %d\n", y+1); //test
-        wypisz_mape(map, stdout); //test
+
+        wprintf(L"Iteracja nr: %d\n", y+1); //test
+        wypisz_mape(map, out);
+
+	    if(name != NULL){
+	        fclose(out);
+	        free(nazwa);
+	    }
     }
     return 0;
 }

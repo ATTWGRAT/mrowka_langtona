@@ -9,7 +9,7 @@ dane_wywolania czytaj_argumenty(int argc, char** argv);
  * Następnie korzystając z funkcji getopt wpakować je do struktury zgodnie z zasadami
  * zdefiniowanymi powyżej.*/
 
-int wypisz_mape(p_mapa map, FILE* wyjscie); //Funkcja zwraca 0 jeśli sukces w wypisywaniu i 1 jeśli fail
+void wypisz_mape(p_mapa map, FILE* wyjscie);
 /* Funkcja ma wypisać do wyjscia mapę włącznie z lokalizacją mrówki i jej kierunkiem.
  * Niech korzysta z funkcji fprintf, to będzie można też pisać do stdout
  * poniżej znaki, które możesz użyć.
