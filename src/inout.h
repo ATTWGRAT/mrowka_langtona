@@ -4,7 +4,7 @@
 #include "mapa.h"
 #include "dane.h"
 
-dane_wywolania czytaj_argumenty(int argc, char** argv);
+dane_wywolania* czytaj_argumenty(int argc, char** argv);
 /* Funkcja ma tworzyć strukturę dane_wywolania (po prostu "dane_wywolania nazwa").
  * Następnie korzystając z funkcji getopt wpakować je do struktury zgodnie z zasadami
  * zdefiniowanymi powyżej.*/

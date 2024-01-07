@@ -5,6 +5,6 @@
 #include "mapa.h"
 int main(int argc, char** argv)
 {
-    /* Plik ma zawierać jedynie wywołania funkcji potrzebne do odpalenia programu*/
+    czytaj_argumenty(argc, argv);
     return 0;
 }

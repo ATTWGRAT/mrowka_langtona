@@ -136,3 +136,92 @@ void wypisz_mape(p_mapa map, FILE* wyjscie)
     return 0;
 
 }
+
+dane_wywolania* czytaj_argumenty(int argc, char** argv)
+{
+    dane_wywolania* dane = malloc(sizeof *dane);
+
+    int opt;
+
+    dane->mapa = NULL;
+    dane-> procent = -1;
+
+    while((opt = getopt(argc, argv, ":m:n:i:o:k:f:p:")) != -1)
+    {
+        switch(opt){
+            case 'm':
+                if(atoi(optarg) < 1 || strchr(optarg, '.') != NULL)
+                {
+                    fprintf(stderr, "Ten Input jest nieprawidlowy \n");
+                    free(dane);
+                    return NULL;
+                }else {
+                    dane->m = atoi(optarg);
+                printf("%d\n", dane->m); //debug
+                }
+                break;
+            case 'n':
+                if(atoi(optarg) < 1 || strchr(optarg, '.') != NULL)
+                {
+                    fprintf(stderr, "Ten Input jest nieprawidlowy \n");
+                    free(dane);
+                    return NULL;
+                }else {
+                    dane->n = atoi(optarg);
+                printf("%d\n", dane->n); //debug
+                }
+                break;
+            case 'i':
+                if(atoi(optarg) < 1 || strchr(optarg, '.') != NULL)
+                {
+                    fprintf(stderr, "Ten Input jest nieprawidlowy \n");
+                    free(dane);
+                    return NULL;
+                }else {
+                    dane->i = atoi(optarg);
+                     printf("%d\n", dane->i); //debug
+                }
+                break;
+            case 'o':
+                dane->name = optarg;
+                break;
+            case 'k':
+                if(optarg == "P" || optarg == "L"|| optarg == "G"|| optarg == "D"
+                   optarg == "p" || optarg == "l"|| optarg == "g"|| optarg == "d")
+                {
+                    dane->kier = optarg; // moze sie okazac ze tu jest problem;
+                    printf("%c\n", dane->kier); //debug
+                } else{
+                    fprintf(stderr, "Ten Input jest nieprawidlowy \n"); 
+                    free(dane);
+                    return NULL;                 
+                }
+                break;
+            case 'f':
+                dane->mapa = optarg;
+                f = 1;
+                break;
+            case 'p':
+                if (atof(optarg) < 0 && atof(optarg) > 100)
+                {
+                    fprintf(stderr, "Ten Input jest nieprawidlowy \n");
+                    free(dane);
+                    return NULL;   
+                } else{
+                    dane->procent = atof(optarg);
+                    printf("&g\n", dane->procent); //debug
+                }
+                break;
+            case '?':
+                fprintf(stderr, "Nieznana opcja: %c\n", optopt); 
+                free(dane);
+                return NULL; 
+            case ':':
+                fprintf(stderr, "Opcja %c wymaga wartosci \n", optopt); 
+                free(dane);
+                return NULL;   
+        }
+    }
+
+    return dane;
+}
