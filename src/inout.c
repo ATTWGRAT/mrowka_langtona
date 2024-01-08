@@ -217,7 +217,7 @@ dane_wywolania* czytaj_argumenty(int argc, char** argv)
                 break;
 
             case 'p':
-                if (atof(optarg) < 0 && atof(optarg) > 100)
+                if (atof(optarg) < 0 || atof(optarg) > 100)
                 {
                     fprintf(stderr, "Ten Input jest nieprawidlowy \n");
                     free(dane);
