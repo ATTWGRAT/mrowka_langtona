@@ -70,6 +70,9 @@ int mrowka_odpal(int i, p_mapa map, char* name)
 {	
     for(int y = 0; y < i; y++)
     {
+        if(mrowka_przejdz(map))
+            return 1;
+
 	    char* nazwa;
 	    FILE* out;
 
@@ -83,10 +86,7 @@ int mrowka_odpal(int i, p_mapa map, char* name)
 		    out = stdout;
 	    }
 
-	    if(mrowka_przejdz(map))
-            return 1;
-
-            wypisz_mape(map, out);
+        wypisz_mape(map, out);
 
 	    if(name != NULL){
 	        fclose(out);

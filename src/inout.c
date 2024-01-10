@@ -1,32 +1,16 @@
 #include <locale.h>
 #include "inout.h"
 
-#define LINE_VERTICAL L"│"
-#define LINE_HORIZONTAL L"─"
-#define LINE_DOWN_RIGHT L"┌"
-#define LINE_DOWN_LEFT L"┐"
-#define LINE_UP_RIGHT L"└"
-#define LINE_UP_LEFT L"┘"
-#define SQUARE_WHITE L" "
-#define SQUARE_BLACK L"█"
-#define ARROW_NORTH_WHITE L"△"
-#define ARROW_NORTH_BLACK L"▲"
-#define ARROW_EAST_WHITE L"▷"
-#define ARROW_EAST_BLACK L"▶"
-#define ARROW_SOUTH_WHITE L"▽"
-#define ARROW_SOUTH_BLACK L"▼"
-#define ARROW_WEST_WHITE L"◁"
-#define ARROW_WEST_BLACK L"◀"
-
 int wczytaj_mape_z_pliku(FILE* plik, int n, int m, mapa_tab mapa, mrowka* mrow)
 {
-    if(fscanf(plik, "%d", &(mrow->x)) == 0)
+    if(fscanf(plik, "%d", &(mrow->x)) == 0 || fscanf(plik, "%d", &(mrow->y)) == 0)
     {
-	    printf("dbg1");
+        wprintf(L"Błąd przy wczytywaniu lokalizacji mrówki\n");
         return 1;
     }
-    if(fscanf(plik, "%d", &(mrow->y)) == 0){
-	    printf("dbg2");
+    if(mrow->x < 0 || mrow->x >= n || mrow->y < 0 || mrow->y > m)
+    {
+        wprintf(L"Błędna pozycja mrówki we wczytanym pliku");
         return 1;
     }
     for(int i = 0; i < m; i++)
@@ -36,9 +20,8 @@ int wczytaj_mape_z_pliku(FILE* plik, int n, int m, mapa_tab mapa, mrowka* mrow)
             int temp;
 
             if(fscanf(plik, "%d", &temp) == 0){
-	    printf("dbg3: %d, %d", i, y);
                 return 1;
-	    }
+	        }
             if(temp != 0 && temp != 1)
                 return 1;
 
@@ -164,7 +147,7 @@ dane_wywolania* czytaj_argumenty(int argc, char** argv)
             case 'm':
                 if(atoi(optarg) < 1 || strchr(optarg, '.') != NULL)
                 {
-                    fprintf(stderr, "Ten Input jest nieprawidlowy \n");
+                    fprintf(stderr, "Opcja -m jest nieprawidłowa \n");
                     free(dane);
                     return NULL;
                 }else {
@@ -175,7 +158,7 @@ dane_wywolania* czytaj_argumenty(int argc, char** argv)
             case 'n':
                 if(atoi(optarg) < 1 || strchr(optarg, '.') != NULL)
                 {
-                    fprintf(stderr, "Ten Input jest nieprawidlowy \n");
+                    fprintf(stderr, "Opcja -n jest nieprawidłowa \n");
                     free(dane);
                     return NULL;
                 }else {
@@ -186,7 +169,7 @@ dane_wywolania* czytaj_argumenty(int argc, char** argv)
             case 'i':
                 if(atoi(optarg) < 1 || strchr(optarg, '.') != NULL)
                 {
-                    fprintf(stderr, "Ten Input jest nieprawidlowy \n");
+                    fprintf(stderr, "Opcja -i jest nieprawidłowa \n");
                     free(dane);
                     return NULL;
                 }else {
@@ -203,7 +186,7 @@ dane_wywolania* czytaj_argumenty(int argc, char** argv)
                 {
                     dane->kier = toupper(*optarg); 
                 } else{
-                    fprintf(stderr, "Ten Input jest nieprawidlowy \n"); 
+                    fprintf(stderr, "Opcja -k jest nieprawidłowa \n");
                     free(dane);
                     return NULL;                 
                 }
@@ -224,7 +207,7 @@ dane_wywolania* czytaj_argumenty(int argc, char** argv)
             case 'p':
                 if (atof(optarg) < 0 || atof(optarg) > 100)
                 {
-                    fprintf(stderr, "Ten Input jest nieprawidlowy \n");
+                    fprintf(stderr, "Opcja -p jest nieprawidłowa \n");
                     free(dane);
                     return NULL;   
                 } else{
@@ -238,7 +221,7 @@ dane_wywolania* czytaj_argumenty(int argc, char** argv)
                 return NULL; 
 
             case ':':
-                fprintf(stderr, "Opcja %c wymaga wartosci \n", optopt); 
+                fprintf(stderr, "Opcja %c wymaga wartosci \n", optopt);
                 free(dane);
                 return NULL;   
         }
@@ -246,28 +229,28 @@ dane_wywolania* czytaj_argumenty(int argc, char** argv)
 
     if(dane->m == -1)
     {
-        fprintf(stderr, "Opcja m jest wymagana \n");
+        fprintf(stderr, "Opcja -m jest wymagana \n");
         free(dane);
         return NULL;
     }
 
     if(dane->n == -1)
     {
-        fprintf(stderr, "Opcja n jest wymagana \n");
+        fprintf(stderr, "Opcja -n jest wymagana \n");
         free(dane);
         return NULL;
     }
 
     if(dane->i == -1)
     {
-        fprintf(stderr, "Opcja i jest wymagana \n");
+        fprintf(stderr, "Opcja -i jest wymagana \n");
         free(dane);
         return NULL;
     }
 
     if(dane->kier == 'Z')
     {
-        fprintf(stderr, "Opcja k jest wymagana \n");
+        fprintf(stderr, "Opcja -k jest wymagana \n");
         free(dane);
         return NULL;
     }
