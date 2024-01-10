@@ -133,8 +133,6 @@ void wypisz_mape(p_mapa map, FILE* wyjscie)
     
     fwprintf(wyjscie, L"\n");
 
-    return 0;
-
 }
 
 dane_wywolania* czytaj_argumenty(int argc, char** argv)
@@ -150,6 +148,8 @@ dane_wywolania* czytaj_argumenty(int argc, char** argv)
     dane->kier = 'Z';
     dane->mapa = NULL;
     dane-> procent = -1;
+
+    FILE* file;
 
 
     while((opt = getopt(argc, argv, ":m:n:i:o:k:f:p:")) != -1)
@@ -193,8 +193,7 @@ dane_wywolania* czytaj_argumenty(int argc, char** argv)
                 break;
 
             case 'k':
-                if(*optarg == 'P' || *optarg == 'L'|| *optarg == 'G'|| *optarg == 'D'
-                   *optarg == 'p' || *optarg == 'l'|| *optarg == 'g'|| *optarg == 'd')
+                if(*optarg == 'P' || *optarg == 'L'|| *optarg == 'G'|| *optarg == 'D' || *optarg == 'p' || *optarg == 'l'|| *optarg == 'g'|| *optarg == 'd')
                 {
                     dane->kier = toupper(*optarg); 
                 } else{
@@ -205,7 +204,7 @@ dane_wywolania* czytaj_argumenty(int argc, char** argv)
                 break;
 
             case 'f':
-                FILE *file =  fopen(optarg, "r");
+                file = fopen(optarg, "r");
 
                 if(file == NULL)
                 {
@@ -256,13 +255,6 @@ dane_wywolania* czytaj_argumenty(int argc, char** argv)
     if(dane->i == -1)
     {
         fprintf(stderr, "Opcja i jest wymagana \n");
-        free(dane);
-        return NULL;
-    }
-
-    if(dane->name == NULL)
-    {
-        fprintf(stderr, "Opcja o jest wymagana \n");
         free(dane);
         return NULL;
     }
