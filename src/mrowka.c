@@ -86,7 +86,7 @@ int mrowka_odpal(int i, p_mapa map, char* name)
 	    if(mrowka_przejdz(map))
             return 1;
 
-        wypisz_mape(map, out);
+            wypisz_mape(map, out);
 
 	    if(name != NULL){
 	        fclose(out);

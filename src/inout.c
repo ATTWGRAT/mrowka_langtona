@@ -1,22 +1,44 @@
 #include <locale.h>
 #include "inout.h"
+
+#define LINE_VERTICAL L"│"
+#define LINE_HORIZONTAL L"─"
+#define LINE_DOWN_RIGHT L"┌"
+#define LINE_DOWN_LEFT L"┐"
+#define LINE_UP_RIGHT L"└"
+#define LINE_UP_LEFT L"┘"
+#define SQUARE_WHITE L" "
+#define SQUARE_BLACK L"█"
+#define ARROW_NORTH_WHITE L"△"
+#define ARROW_NORTH_BLACK L"▲"
+#define ARROW_EAST_WHITE L"▷"
+#define ARROW_EAST_BLACK L"▶"
+#define ARROW_SOUTH_WHITE L"▽"
+#define ARROW_SOUTH_BLACK L"▼"
+#define ARROW_WEST_WHITE L"◁"
+#define ARROW_WEST_BLACK L"◀"
+
 int wczytaj_mape_z_pliku(FILE* plik, int n, int m, mapa_tab mapa, mrowka* mrow)
 {
     if(fscanf(plik, "%d", &(mrow->x)) == 0)
+    {
+	    printf("dbg1");
         return 1;
-
-    if(fscanf(plik, "%d", &(mrow->y)) == 0)
+    }
+    if(fscanf(plik, "%d", &(mrow->y)) == 0){
+	    printf("dbg2");
         return 1;
-
+    }
     for(int i = 0; i < m; i++)
     {
         for(int y = 0; y < n; y++)
         {
             int temp;
 
-            if(fscanf(plik, "%d", &temp) == 0)
+            if(fscanf(plik, "%d", &temp) == 0){
+	    printf("dbg3: %d, %d", i, y);
                 return 1;
-
+	    }
             if(temp != 0 && temp != 1)
                 return 1;
 
@@ -31,22 +53,6 @@ int wczytaj_mape_z_pliku(FILE* plik, int n, int m, mapa_tab mapa, mrowka* mrow)
 
 void wypisz_mape(p_mapa map, FILE* wyjscie)
 {
-    wchar_t*  LINE_VERTICAL = L"│";
-    wchar_t* LINE_HORIZONTAL = L"─";
-    wchar_t* LINE_DOWN_RIGHT = L"┌";
-    wchar_t* LINE_DOWN_LEFT = L"┐";
-    wchar_t* LINE_UP_RIGHT = L"└";
-    wchar_t* LINE_UP_LEFT = L"┘";
-    wchar_t* SQUARE_WHITE = L" ";
-    wchar_t* SQUARE_BLACK = L"█";
-    wchar_t* ARROW_NORTH_WHITE = L"△";
-    wchar_t* ARROW_NORTH_BLACK = L"▲";
-    wchar_t* ARROW_EAST_WHITE = L"▷";
-    wchar_t* ARROW_EAST_BLACK = L"▶";
-    wchar_t* ARROW_SOUTH_WHITE = L"▽";
-    wchar_t* ARROW_SOUTH_BLACK = L"▼";
-    wchar_t* ARROW_WEST_WHITE = L"◁";
-    wchar_t* ARROW_WEST_BLACK = L"◀";
 
     setlocale(LC_ALL, "C.UTF-8");
 

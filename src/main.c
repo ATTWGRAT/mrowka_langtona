@@ -13,9 +13,11 @@ int main(int argc, char** argv)
 
     p_mapa map = stworz_mape(*dane_p);
 
-    if(map == NULL)
+    if(map == NULL){
 	    fprintf(stderr, "%s: Blad przy wczytywaniu mapy z pliku!\n", argv[0]);
-
+	    return 1;
+    }
+    wypisz_mape(map, stdout);
     switch(mrowka_odpal(dane_p->i, map, dane_p->name)){
 	case 0:
 	        break;
