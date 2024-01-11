@@ -35,7 +35,7 @@ typedef struct m{
 
 }*p_mapa;
 
-p_mapa stworz_mape(dane_wywolania dane);
+p_mapa stworz_mape(dane_wywolania* dane);
 
 void zwolnij_mape(p_mapa mapa);
 

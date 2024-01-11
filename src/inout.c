@@ -22,11 +22,9 @@ int wczytaj_mape_z_pliku(FILE* plik, int n, int m, mapa_tab mapa, mrowka* mrow)
 {
     if(fscanf(plik, "%d", &(mrow->x)) == 0)
     {
-	    printf("dbg1");
         return 1;
     }
     if(fscanf(plik, "%d", &(mrow->y)) == 0){
-	    printf("dbg2");
         return 1;
     }
     for(int i = 0; i < m; i++)
@@ -36,9 +34,9 @@ int wczytaj_mape_z_pliku(FILE* plik, int n, int m, mapa_tab mapa, mrowka* mrow)
             int temp;
 
             if(fscanf(plik, "%d", &temp) == 0){
-	    printf("dbg3: %d, %d", i, y);
                 return 1;
-	    }
+	          }
+
             if(temp != 0 && temp != 1)
                 return 1;
 
@@ -79,9 +77,10 @@ void wypisz_mape(p_mapa map, FILE* wyjscie)
                                 break;
                             case 0:
                                 fwprintf(wyjscie, L"%ls", ARROW_EAST_WHITE);
-			       	break;         
+                  			       	break;         
                         }
                         break;
+
                     case LEWO:
                         switch(map->mapa[i][j]){
                             case 1:
@@ -92,6 +91,7 @@ void wypisz_mape(p_mapa map, FILE* wyjscie)
                                 break;         
                         }
                         break;
+
                     case DOL:
                         switch(map->mapa[i][j]){
                             case 1:
@@ -102,6 +102,7 @@ void wypisz_mape(p_mapa map, FILE* wyjscie)
                                 break;         
                         }
                         break;
+
                     case GORA:
                         switch(map->mapa[i][j]){
                             case 1:
@@ -114,7 +115,7 @@ void wypisz_mape(p_mapa map, FILE* wyjscie)
                         break;
                 }
             }
-	        else
+	          else
             {
                 switch(map->mapa[i][j]){
                     case 1:
@@ -218,7 +219,6 @@ dane_wywolania* czytaj_argumenty(int argc, char** argv)
                 }else{
                     dane->mapa = file;
                 }
-
                 break;
 
             case 'p':
@@ -236,6 +236,7 @@ dane_wywolania* czytaj_argumenty(int argc, char** argv)
                 fprintf(stderr, "Nieznana opcja: %c\n", optopt); 
                 free(dane);
                 return NULL; 
+                break;
 
             case ':':
                 fprintf(stderr, "Opcja %c wymaga wartosci \n", optopt); 
