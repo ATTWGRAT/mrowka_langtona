@@ -4,10 +4,24 @@
 #include "mapa.h"
 #include "dane.h"
 
+#define LINE_VERTICAL L"│"
+#define LINE_HORIZONTAL L"─"
+#define LINE_DOWN_RIGHT L"┌"
+#define LINE_DOWN_LEFT L"┐"
+#define LINE_UP_RIGHT L"└"
+#define LINE_UP_LEFT L"┘"
+#define SQUARE_WHITE L" "
+#define SQUARE_BLACK L"█"
+#define ARROW_NORTH_WHITE L"△"
+#define ARROW_NORTH_BLACK L"▲"
+#define ARROW_EAST_WHITE L"▷"
+#define ARROW_EAST_BLACK L"▶"
+#define ARROW_SOUTH_WHITE L"▽"
+#define ARROW_SOUTH_BLACK L"▼"
+#define ARROW_WEST_WHITE L"◁"
+#define ARROW_WEST_BLACK L"◀"
+
 dane_wywolania* czytaj_argumenty(int argc, char** argv);
-/* Funkcja ma tworzyć strukturę dane_wywolania (po prostu "dane_wywolania nazwa").
- * Następnie korzystając z funkcji getopt wpakować je do struktury zgodnie z zasadami
- * zdefiniowanymi powyżej.*/
 
 void wypisz_mape(p_mapa map, FILE* wyjscie);
 
