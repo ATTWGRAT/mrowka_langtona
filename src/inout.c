@@ -1,4 +1,3 @@
-#include <locale.h>
 #include "inout.h"
 
 int wczytaj_mape_z_pliku(FILE* plik, int n, int m, mapa_tab mapa, mrowka* mrow)
@@ -11,7 +10,7 @@ int wczytaj_mape_z_pliku(FILE* plik, int n, int m, mapa_tab mapa, mrowka* mrow)
 
     if(mrow->x < 0 || mrow->x >= n || mrow->y < 0 || mrow->y > m)
     {
-        wprintf(L"Błędna pozycja mrówki we wczytanym pliku");
+        wprintf(L"Błędna pozycja mrówki we wczytanym pliku\n");
         return 1;
     }
 
@@ -24,9 +23,10 @@ int wczytaj_mape_z_pliku(FILE* plik, int n, int m, mapa_tab mapa, mrowka* mrow)
             if(fscanf(plik, "%d", &temp) == 0)
                 return 1;
 	          
-            if(temp != 0 && temp != 1)
+            if(temp != 0 && temp != 1){
+                wprintf(L"Niepoprawny format mapy!\n");
                 return 1;
-
+            }
             mapa[i][y] = (pole) temp;
 
         }

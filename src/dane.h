@@ -9,6 +9,7 @@
 #include <string.h>
 #include <time.h>
 #include <math.h>
+#include <locale.h>
 
 typedef enum k{
     PRAWO = 'P',

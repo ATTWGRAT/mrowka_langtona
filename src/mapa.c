@@ -30,14 +30,34 @@ p_mapa stworz_mape(dane_wywolania* dane)
 {
     p_mapa mapa = malloc(sizeof *mapa);
 
+    if(mapa == NULL)
+        return NULL;
+
     mapa->m = dane->m;
     mapa->n = dane->n;
 
     mapa_tab tablica = malloc(dane->m * sizeof *tablica);
 
-    for(int i = 0; i < dane->m; i++)
-        tablica[i] = calloc(dane->n, sizeof (*tablica)[i]);
+    if(tablica == NULL)
+    {
+      free(mapa);
+      return NULL;
+    }
 
+    for(int i = 0; i < dane->m; i++){
+        tablica[i] = calloc(dane->n, sizeof (*tablica)[i]);
+        
+        if(tablica[i] == NULL)
+        {
+            for(int j = 0; j < i; j++)
+            {
+              free(tablica[j]);
+            }
+            free(tablica);
+            free(mapa);
+            return NULL;
+        }
+    }
 
     mapa->mapa = tablica;
 
@@ -54,11 +74,13 @@ p_mapa stworz_mape(dane_wywolania* dane)
             zwolnij_mape(mapa);
             return NULL;
         }
-	fclose(dane->mapa);
-    } else {
-        mrow.x = dane->n/2;
-        mrow.y = dane->m/2;
-    }
+
+	      fclose(dane->mapa);
+    
+        } else {
+            mrow.x = dane->n/2;
+            mrow.y = dane->m/2;
+        }
 
     mrow.k = dane->kier;
     mapa->pozycja = mrow;
