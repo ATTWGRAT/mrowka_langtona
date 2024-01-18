@@ -1,5 +1,4 @@
 #include "mrowka.h"
-#include "inout.h"
 
 int mrowka_przejdz(p_mapa map)
 {
