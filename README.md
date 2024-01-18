@@ -1,6 +1,11 @@
 # mrowka_langtona
+Kompilacja:
+make build - Tworzy folder bin i w nim plik mrowka.exe
+make test - robi to co make build i wykonuje testy
+
+
 Sposób Korzystania:
-Po skąpilowaniu uruchamiemy go z opcjami wywołania z których obowiązkowych jest 5:
+Po skompilowaniu uruchamiemy go z opcjami wywołania z których obowiązkowych jest 5:
 
 -m -> Odpowiadający za ilość wierszy tworzonej planszy (obszaru poruszania się mrówki) 
     Oczekiwana: liczba natrualna; 1,2,3,4...
@@ -29,6 +34,6 @@ Bez tych opcji program zadziała.
 
 Przykładowy sposób wywołania:
 
-./a.out -m 72 -n 98 -i 2000 -o kartka -k L -p 72.3
+bin/mrowka.exe -m 72 -n 98 -i 2000 -o kartka -k L -p 72.3
 
 
