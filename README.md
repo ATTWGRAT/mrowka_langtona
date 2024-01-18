@@ -1,7 +1,10 @@
 # mrowka_langtona
 Kompilacja:
+
 make build - Tworzy folder bin i w nim plik mrowka.exe
+
 make test - robi to co make build i wykonuje testy
+
 
 
 Sposób Korzystania:
