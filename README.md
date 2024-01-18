@@ -30,6 +30,30 @@ Bez tych opcji program nie zadziała. Pozostałe trzy opcje są opcjonalne:
 -f -> Nazwa pliku z mapą po której ma się pruszać mrówka
     Oczekiwana: nazwa; np. test2
 
+Format pliku:
+
+x y
+
+1 0 0 ... 1
+
+
+1 1 0 ... 0
+
+
+.
+
+
+.
+
+
+.
+
+
+1 0 0 ... 1
+
+gdzie (x, y) to lokalizacja mrówki na planszy, a 0 i 1 to odpowiednio pole białe lub czarne.
+
+
 -p -> Procent mapy który ma być wypełnione
     Oczekiwana: liczba rzeczywista z przedziału (0, 100); np. 72.1
 
